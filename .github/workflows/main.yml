@@ -18,7 +18,6 @@ jobs:
           
       - name: adding tenant repo
         run: |
-          git remote add mmtc https://github.com/Swa-DevOps/CM-AEM-TONOMUS.git --track cm/qa
           git fetch mmtc
           
       - name: Subtree
