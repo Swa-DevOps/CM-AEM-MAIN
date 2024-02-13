@@ -18,7 +18,7 @@ jobs:
           
       - name: adding tenant repo
         run: |
-          git remote add tonomus1 https://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@github.com/Swa-DevOps/CM-AEM-TONOMUS.git --track cm/qa
+         # git remote add tonomus1 https://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@github.com/Swa-DevOps/CM-AEM-TONOMUS.git --track cm/qa
           git fetch tonomus1
           
       - name: Subtree
