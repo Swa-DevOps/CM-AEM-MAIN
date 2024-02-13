@@ -18,13 +18,13 @@ jobs:
           
       - name: adding tenant repo
         run: |
-          git fetch talentacademy
+          git fetch mmtc
           
       - name: Subtree
         run: |
           git config --global user.email "bute.swarup@gmail.com"
           git config --global user.name "swarup"
-          git subtree pull --prefix=talentacademy talentacademy cm/qa
+          git subtree pull --prefix=mmtc mmtc cm/qa --squash=no
  
       - name: Push changes to AEM Main Repo
         run: |
