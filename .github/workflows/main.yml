@@ -24,8 +24,8 @@ jobs:
         run: |
           git config --global user.email "bute.swarup@gmail.com"
           git config --global user.name "swarup"
-          git subtree pull --prefix=tonomus https://github.com/Swa-DevOps/CM-AEM-TONOMUS.git cm/qa
-
+          git subtree add --prefix=tonomus https://github.com/Swa-DevOps/CM-AEM-TONOMUS.git cm/qa --squash
+ 
       - name: Push changes to AEM Main Repo
         run: |
           git push https://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@github.com/Swa-DevOps/CM-AEM-MAIN.git cm/qa 
