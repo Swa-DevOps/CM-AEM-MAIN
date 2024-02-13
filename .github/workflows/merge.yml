@@ -15,6 +15,10 @@ jobs:
         with:
           repository: Swa-DevOps/CM-AEM-MAIN
           ref: refs/heads/cm/qa 
+        
+      - name: adding tenant repo
+        run: |
+          git fetch tonomus
 
       - name: Subtree
         run: |
