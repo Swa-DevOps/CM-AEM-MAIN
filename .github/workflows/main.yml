@@ -1,0 +1,27 @@
+name: Subtree to AEM Main Repo
+
+on:
+  workflow_dispatch:
+    inputs:
+      REPO:
+        description: "Specify Tenant"
+        required: true
+jobs:
+  subtree_to_aem_main:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          repository: Swa-DevOps/CM-AEM-MAIN
+          ref: refs/heads/cm/qa 
+
+      - name: Subtree
+        run: |
+          git config --global user.email "bute.swarup@gmail.com"
+          git config --global user.name "swarup"
+          git subtree add --prefix=tonomus https://github.com/Swa-DevOps/CM-AEM-TONOMUS.git cm/qa
+
+      - name: Push changes to AEM Main Repo
+        run: |
+          git push https://github.com/Swa-DevOps/CM-AEM-MAIN.git --track cm/qa
