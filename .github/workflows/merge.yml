@@ -18,6 +18,7 @@ jobs:
           
       - name: adding tenant repo
         run: |
+          git remote add inowa https://github.com/Swa-DevOps/CM-AEM-TONOMUS.git --track cm/qa
           git fetch inowa
           
       - name: Subtree
