@@ -1,4 +1,4 @@
-name: Subtree to AEM Main Repo
+name: Push subtree changes to AEM repo
 
 on:
   workflow_dispatch:
