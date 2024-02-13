@@ -1,4 +1,4 @@
-name: Subtree to AEM Main Repo
+name: Fresh code from tenant repo
 
 on:
   workflow_dispatch:
