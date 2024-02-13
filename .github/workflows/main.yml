@@ -24,4 +24,4 @@ jobs:
 
       - name: Push changes to AEM Main Repo
         run: |
-          git push https://github.com/Swa-DevOps/CM-AEM-MAIN.git cm/qa
+          git push https://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@github.com/Swa-DevOps/CM-AEM-MAIN.git cm/qa 
