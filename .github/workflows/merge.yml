@@ -1,4 +1,4 @@
-name: Fresh code from tenant repo
+name: Subtree to AEM Main Repo
 
 on:
   workflow_dispatch:
@@ -8,7 +8,7 @@ on:
         required: true
 jobs:
   subtree_to_aem_main:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -18,13 +18,14 @@ jobs:
           
       - name: adding tenant repo
         run: |
-          git fetch mmtc
+          git remote add tonomus https://github.com/Swa-DevOps/CM-AEM-TONOMUS.git --track cm/qa
+          git fetch tonomus
           
       - name: Subtree
         run: |
           git config --global user.email "bute.swarup@gmail.com"
           git config --global user.name "swarup"
-          git subtree pull --prefix=mmtc mmtc cm/qa --squash=no
+          git subtree pull --prefix=tonomus --squash https://github.com/Swa-DevOps/CM-AEM-TONOMUS.git cm/qa
  
       - name: Push changes to AEM Main Repo
         run: |
