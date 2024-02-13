@@ -18,14 +18,14 @@ jobs:
           
       - name: adding tenant repo
         run: |
-          git remote add talentacademy https://github.com/Swa-DevOps/CM-AEM-TONOMUS.git --track cm/qa
-          git fetch talentacademy
+          git remote add mmtc https://github.com/Swa-DevOps/CM-AEM-TONOMUS.git --track cm/qa
+          git fetch mmtc
           
       - name: Subtree
         run: |
           git config --global user.email "bute.swarup@gmail.com"
           git config --global user.name "swarup"
-          git subtree add --prefix=talentacademy https://github.com/Swa-DevOps/CM-AEM-TONOMUS.git cm/qa --squash
+          git subtree add --prefix=mmtc https://github.com/Swa-DevOps/CM-AEM-TONOMUS.git cm/qa --squash=no
  
       - name: Push changes to AEM Main Repo
         run: |
