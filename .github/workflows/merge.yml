@@ -18,15 +18,13 @@ jobs:
         
       - name: adding tenant repo
         run: |
-          git remote add tonomusRemote https://github.com/Swa-DevOps/CM-AEM-TONOMUS.git -t cm/qa
-          git fetch tonomus
-          git rebase https://github.com/Swa-DevOps/CM-AEM-TONOMUS.git -t cm/qa
+          git remote add tenant https://github.com/Swa-DevOps/CM-AEM-TONOMUS.git
 
       - name: Subtree
         run: |
           git config --global user.email "bute.swarup@gmail.com"
           git config --global user.name "swarup"
-          git subtree  pull --prefix=tonomus tonomusRemote cm/qa --squash
+          git subtree  pull --prefix=tonomus tenant cm/qa --squash
 
       - name: Push changes to AEM Main Repo
         run: |
