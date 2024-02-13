@@ -32,6 +32,7 @@ jobs:
 
       - name: Pull changes from tenant repo
         run: |
+          git rebase origin/cm/qa
           git subtree pull --prefix=tonomus tonomus1 cm/qa --squash
 
       - name: Debug Output After Pull
