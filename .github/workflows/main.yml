@@ -19,7 +19,6 @@ jobs:
       - name: adding tenant repo
         run: |
           git remote add tonomus https://github.com/Swa-DevOps/CM-AEM-TONOMUS.git --track cm/qa
-          git fetch tonomus
           
       - name: Subtree
         run: |
