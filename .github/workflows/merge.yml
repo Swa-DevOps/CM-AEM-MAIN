@@ -23,7 +23,7 @@ jobs:
           git config --global user.email "bute.swarup@gmail.com"
           git config --global user.name "swarup"
           git pull origin cm/qa
-          git remote add -f test1 https://github.com/Swa-DevOps/CM-AEM-TONOMUS.git
+          git remote add -f test2 https://github.com/Swa-DevOps/CM-AEM-TONOMUS.git
           
       - name: Debug Output Before Pull
         run: |
@@ -32,8 +32,8 @@ jobs:
 
       - name: Pull changes from tenant repo
         run: |
-          #git rebase origin/cm/qa
-          git subtree pull --prefix=test1 https://github.com/Swa-DevOps/CM-AEM-TONOMUS.git cm/qa --squash
+          
+          git subtree pull --prefix=test2 https://github.com/Swa-DevOps/CM-AEM-TONOMUS.git cm/qa --rebase
 
       - name: Debug Output After Pull
         run: |
