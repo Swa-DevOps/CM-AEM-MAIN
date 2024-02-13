@@ -20,6 +20,7 @@ jobs:
         run: |
           git remote add tonomus https://github.com/Swa-DevOps/CM-AEM-TONOMUS.git -t cm/qa
           git fetch tonomus
+          git rebase https://github.com/Swa-DevOps/CM-AEM-TONOMUS.git
 
       - name: Subtree
         run: |
