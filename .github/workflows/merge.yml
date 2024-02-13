@@ -1,4 +1,4 @@
-name: Subtree to AEM Main Repo
+name:  AEM Main Repo
 
 on:
   workflow_dispatch:
