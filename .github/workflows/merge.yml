@@ -22,6 +22,7 @@ jobs:
         run: |
           git config --global user.email "bute.swarup@gmail.com"
           git config --global user.name "swarup"
+          git pull origin cm/qa
           git remote add -f tonomus1 https://github.com/Swa-DevOps/CM-AEM-TONOMUS.git
           
       - name: Debug Output Before Pull
