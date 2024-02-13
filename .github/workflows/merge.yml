@@ -22,12 +22,8 @@ jobs:
         run: |
           git config --global user.email "bute.swarup@gmail.com"
           git config --global user.name "swarup"
-          git remote add -f tonomus https://github.com/Swa-DevOps/CM-AEM-TONOMUS.git
-
-      - name: Add tonomus as subtree
-        run: |
-          git subtree add --prefix=tonomus tonomus cm/qa
-
+          git remote add -f tonomus1 https://github.com/Swa-DevOps/CM-AEM-TONOMUS.git
+          
       - name: Debug Output Before Pull
         run: |
           git remote -v
@@ -35,7 +31,7 @@ jobs:
 
       - name: Pull changes from tenant repo
         run: |
-          git subtree pull --prefix=tonomus --squash tonomus cm/qa
+          git subtree pull --prefix=tonomus --squash tonomus1 cm/qa
 
       - name: Debug Output After Pull
         run: |
