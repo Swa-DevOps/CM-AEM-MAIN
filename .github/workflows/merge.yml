@@ -6,27 +6,28 @@ on:
       REPO:
         description: "Specify Tenant"
         required: true
+
 jobs:
   subtree_to_aem_main:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
         with:
           repository: Swa-DevOps/CM-AEM-MAIN
           ref: refs/heads/cm/qa 
-          
-      - name: adding tenant repo
-        run: |
-          git remote add tonomus https://github.com/Swa-DevOps/CM-AEM-TONOMUS.git --track cm/qa
-          git fetch tonomus
-          
-      - name: Subtree
+
+      - name: Add remote and fetch tenant repo
         run: |
           git config --global user.email "bute.swarup@gmail.com"
           git config --global user.name "swarup"
-          git subtree pull --prefix=tonomus --squash https://github.com/Swa-DevOps/CM-AEM-TONOMUS.git cm/qa
- 
+          git remote add -f tonomus https://github.com/Swa-DevOps/CM-AEM-TONOMUS.git
+
+      - name: Pull changes from tenant repo
+        run: |
+          git subtree pull --prefix=tonomus --squash tonomus cm/qa
+
       - name: Push changes to AEM Main Repo
         run: |
-          git push https://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@github.com/Swa-DevOps/CM-AEM-MAIN.git cm/qa 
+          git push https://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@github.com/Swa-DevOps/CM-AEM-MAIN.git cm/qa
