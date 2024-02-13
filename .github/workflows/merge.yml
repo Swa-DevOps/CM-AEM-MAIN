@@ -33,7 +33,7 @@ jobs:
       - name: Pull changes from tenant repo
         run: |
           
-          git subtree add --prefix=test2 https://github.com/Swa-DevOps/CM-AEM-TONOMUS.git cm/qa --rebase
+          git subtree add --prefix=test2 https://github.com/Swa-DevOps/CM-AEM-TONOMUS.git cm/qa --[no-]squash 
 
       - name: Debug Output After Pull
         run: |
