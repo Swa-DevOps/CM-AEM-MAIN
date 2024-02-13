@@ -22,11 +22,11 @@ jobs:
         run: |
           git config --global user.email "bute.swarup@gmail.com"
           git config --global user.name "swarup"
-          git remote add -f tonomus https://github.com/Swa-DevOps/CM-AEM-TONOMUS.git
+          git remote add -f tonomusremote https://github.com/Swa-DevOps/CM-AEM-TONOMUS.git
 
       - name: Pull changes from tenant repo
         run: |
-          git subtree pull --prefix=tonomus --squash tonomus cm/qa
+          git subtree pull --prefix=tonomus1 --squash tonomusremote cm/qa
 
       - name: Push changes to AEM Main Repo
         run: |
