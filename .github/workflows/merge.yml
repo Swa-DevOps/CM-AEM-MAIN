@@ -8,7 +8,7 @@ on:
         required: true
 jobs:
   subtree_to_aem_main:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -18,14 +18,13 @@ jobs:
           
       - name: adding tenant repo
         run: |
-          git remote add inowa https://github.com/Swa-DevOps/CM-AEM-TONOMUS.git --track cm/qa
-          git fetch inowa
+          git fetch talentacademy
           
       - name: Subtree
         run: |
           git config --global user.email "bute.swarup@gmail.com"
           git config --global user.name "swarup"
-          git subtree pull --prefix=inowa https://github.com/Swa-DevOps/CM-AEM-TONOMUS.git cm/qa --squash
+          git subtree pull --prefix=talentacademy https://github.com/Swa-DevOps/CM-AEM-TONOMUS.git cm/qa --squash
  
       - name: Push changes to AEM Main Repo
         run: |
