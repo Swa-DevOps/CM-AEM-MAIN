@@ -16,11 +16,16 @@ jobs:
           repository: Swa-DevOps/CM-AEM-MAIN
           ref: refs/heads/cm/qa 
           
+      - name: adding tenant repo
+        run: |
+          git remote add inowa https://github.com/Swa-DevOps/CM-AEM-TONOMUS.git --track cm/qa
+          git fetch inowa
+          
       - name: Subtree
         run: |
           git config --global user.email "bute.swarup@gmail.com"
           git config --global user.name "swarup"
-          git subtree add --prefix=Tonomus https://github.com/Swa-DevOps/CM-AEM-TONOMUS.git cm/qa --squash
+          git subtree add --prefix=inowa https://github.com/Swa-DevOps/CM-AEM-TONOMUS.git cm/qa --squash
  
       - name: Push changes to AEM Main Repo
         run: |
