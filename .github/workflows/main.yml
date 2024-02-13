@@ -16,10 +16,6 @@ jobs:
           repository: Swa-DevOps/CM-AEM-MAIN
           ref: refs/heads/cm/qa 
           
-      - name: adding tenant repo
-        run: |
-          git remote add tonomus https://github.com/Swa-DevOps/CM-AEM-TONOMUS.git --track cm/qa
-          
       - name: Subtree
         run: |
           git config --global user.email "bute.swarup@gmail.com"
