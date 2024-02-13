@@ -32,8 +32,8 @@ jobs:
 
       - name: Pull changes from tenant repo
         run: |
-          
-          git  merge -s subtree --prefix=test2 https://github.com/Swa-DevOps/CM-AEM-TONOMUS.git cm/qa 
+          git merge --squash -X subtree=test2 https://github.com/Swa-DevOps/CM-AEM-TONOMUS.git/cm/qa 
+          #git  merge -s subtree --prefix=test2 https://github.com/Swa-DevOps/CM-AEM-TONOMUS.git cm/qa 
 
       - name: Debug Output After Pull
         run: |
