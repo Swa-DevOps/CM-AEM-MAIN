@@ -20,7 +20,7 @@ jobs:
         run: |
           git config --global user.email "bute.swarup@gmail.com"
           git config --global user.name "swarup"
-          git subtree --allow-unrelated-histories pull --prefix=tonomus https://github.com/Swa-DevOps/CM-AEM-TONOMUS.git cm/qa
+          git subtree  pull --prefix=tonomus https://github.com/Swa-DevOps/CM-AEM-TONOMUS.git cm/qa --allow-unrelated-histories
 
       - name: Push changes to AEM Main Repo
         run: |
