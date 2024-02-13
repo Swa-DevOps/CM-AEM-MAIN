@@ -32,7 +32,7 @@ jobs:
 
       - name: Pull changes from tenant repo
         run: |
-          git merge --squash -X subtree=test2 test2/cm/qa 
+          git merge --squash -X --allow-unrelated-histories subtree=test2 test2/cm/qa 
           #git  merge -s subtree --prefix=test2 https://github.com/Swa-DevOps/CM-AEM-TONOMUS.git cm/qa 
 
       - name: Debug Output After Pull
