@@ -31,7 +31,7 @@ jobs:
       - name: Subtree
         run: |
           git config --global user.email "bute.swarup@gmail.com"
-          git config --global user.name "swarup"
+          git config --global user.name "bute.swarup@gmail.com"
           cp .git/config .git/config-original
           git config --global url."https://swarup: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@github.com/".insteadOf "https://github.com/"
           git config --unset http."https://github.com/".extraheader
