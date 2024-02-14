@@ -25,7 +25,7 @@ jobs:
           
       - name: adding tenant repo
         run: |
-          #git remote add ${{ inputs.REPO }} https://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@github.com/Swa-DevOps/${{ inputs.REPO }}.git --track ${{ inputs.BRANCH }} 
+          #git remote add ${{ inputs.REPO }} https://swarup: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@github.com/Swa-DevOps/${{ inputs.REPO }}.git --track ${{ inputs.BRANCH }} 
           #git fetch ${{ inputs.REPO }}
           
       - name: Subtree
@@ -33,7 +33,7 @@ jobs:
           git config --global user.email "bute.swarup@gmail.com"
           git config --global user.name "swarup"
           cp .git/config .git/config-original
-          git config --global url."https://api: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@github.com/".insteadOf "https://github.com/"
+          git config --global url."https://swarup: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@github.com/".insteadOf "https://github.com/"
           git config --unset http."https://github.com/".extraheader
           
           #git subtree add --prefix=${{ inputs.REPO }} https://github.com/Swa-DevOps/${{ inputs.REPO }}.git ${{ inputs.BRANCH }} --squash
