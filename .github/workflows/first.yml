@@ -29,9 +29,9 @@ jobs:
         run: |
           git config --global user.email "bute.swarup@gmail.com"
           git config --global user.name "swarup"
-          git subtree add --prefix=${{ inputs.REPO }} https://github.com/Swa-DevOps/${{ inputs.REPO }}.git ${{ inputs.BRANCH }} --squash
-          git push origin HEAD:${{ inputs.BRANCH }}
-          git subtree pull --prefix=${{ inputs.REPO }} https://github.com/Swa-DevOps/${{ inputs.REPO }}.git ${{ inputs.BRANCH }} --squash
+          #git subtree add --prefix=${{ inputs.REPO }} https://github.com/Swa-DevOps/${{ inputs.REPO }}.git ${{ inputs.BRANCH }} --squash
+          #git push origin HEAD:${{ inputs.BRANCH }}
+          git subtree pull -d --prefix=${{ inputs.REPO }} https://github.com/Swa-DevOps/${{ inputs.REPO }}.git ${{ inputs.BRANCH }} -m "123" --squash 
           git push origin HEAD:${{ inputs.BRANCH }}
           
        
