@@ -1,4 +1,4 @@
-name: First time subtree and teenant add
+name: Test First time subtree and teenant add 
 
 on:
   workflow_dispatch:
