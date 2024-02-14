@@ -38,7 +38,8 @@ jobs:
 
       - name: merge changes from tenant repo
         run: |
-          git pull --allow-unrelated-histories --squash -X subtree=${{ inputs.REPO }} ${{ inputs.REPO }}/${{ inputs.BRANCH }}  
+          git subtree pull --prefix=${{ inputs.REPO }} https://github.com/Swa-DevOps/CM-AEM-${{ inputs.REPO }}.git ${{ inputs.BRANCH }} 
+          #git merge --allow-unrelated-histories --squash -X subtree=${{ inputs.REPO }} ${{ inputs.REPO }}/${{ inputs.BRANCH }}  
           git commit -m "${{inputs.COMMIT}}"
           #git  merge -s subtree --prefix=${{ inputs.REPO }} https://github.com/Swa-DevOps/CM-AEM-${{ inputs.REPO }}.git ${{ inputs.BRANCH }}  
 
