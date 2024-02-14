@@ -23,14 +23,7 @@ jobs:
         with:
           repository: Swa-DevOps/CM-AEM-MAIN
           ref: refs/heads/${{ inputs.BRANCH }}  
-
-      - name: Add remote and fetch tenant repo
-        run: |
-          git config --global user.email "bute.swarup@gmail.com"
-          git config --global user.name "swarup"
-          git pull origin ${{ inputs.BRANCH }}
-          #git remote add -f ${{ inputs.REPO }} https://github.com/Swa-DevOps/CM-AEM-${{ inputs.REPO }}.git
-      
+          
       - name: Subtree 
         uses: Swa-DevOps/subtree
         with:
