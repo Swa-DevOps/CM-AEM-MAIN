@@ -1,0 +1,47 @@
+name: TEST Push subtree changes to AEM repo
+
+on:
+  workflow_dispatch:
+    inputs:
+      REPO:
+        description: "Specify Tenant Repo" #e.g., CM-AEM-TONOMUS
+        required: true
+      BRANCH:
+        description: "Specify Branch Name"
+        required: true
+        COMMIT:
+        description: "Commit Message"
+        required: true
+
+jobs:
+  subtree_to_aem_main:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          repository: Swa-DevOps/CM-AEM-MAIN
+          ref: refs/heads/${{ inputs.BRANCH }}  
+
+      - name: Add remote and fetch tenant repo
+        run: |
+          git config --global user.email "bute.swarup@gmail.com"
+          git config --global user.name "swarup"
+          git pull origin cm/qa
+          git remote add -f ${{ inputs.REPO }} https://github.com/Swa-DevOps/CM-AEM-${{ inputs.REPO }}.git
+          
+      - name: Debug Output Before Pull
+        run: |
+          git remote -v
+          git log --oneline
+
+      - name: Pull changes from tenant repo
+        run: |
+          git merge --allow-unrelated-histories --squash -X subtree=${{ inputs.REPO }} ${{ inputs.REPO }}/${{ inputs.BRANCH }}  
+          git commit -m "${{inputs.COMMIT}}"
+          #git  merge -s subtree --prefix=${{ inputs.REPO }} https://github.com/Swa-DevOps/CM-AEM-${{ inputs.REPO }}.git ${{ inputs.BRANCH }}  
+
+      - name: Push changes to AEM Main Repo
+        run: |
+          git push https://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@github.com/Swa-DevOps/CM-AEM-MAIN.git ${{ inputs.BRANCH }} 
