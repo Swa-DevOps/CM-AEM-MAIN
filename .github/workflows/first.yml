@@ -32,13 +32,13 @@ jobs:
         run: |
           git config --global user.email "bute.swarup@gmail.com"
           git config --global user.name "bute.swarup@gmail.com"
-          cp .git/config .git/config-original
-          git config --global url."https://swarup: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@github.com/".insteadOf "https://github.com/"
-          git config --unset http."https://github.com/".extraheader
+          #cp .git/config .git/config-original
+          #git config --global url."https://swarup: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@github.com/".insteadOf "https://github.com/"
+          #git config --unset http."https://github.com/".extraheader
           
           #git subtree add --prefix=${{ inputs.REPO }} https://github.com/Swa-DevOps/${{ inputs.REPO }}.git ${{ inputs.BRANCH }} --squash
           #git push origin HEAD:${{ inputs.BRANCH }}
-          git subtree ${{ inputs.ACTION }} -d --prefix=${{ inputs.REPO }} "https://api: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@github.com/Swa-DevOps/${{ inputs.REPO }}.git" --squash "${{ inputs.BRANCH }}" --message="123" 
+          git subtree ${{ inputs.ACTION }} -d --prefix=${{ inputs.REPO }} "https://github.com/Swa-DevOps/${{ inputs.REPO }}.git" --squash "${{ inputs.BRANCH }}" --message="123" 
           git push origin HEAD:${{ inputs.BRANCH }}
           
        
