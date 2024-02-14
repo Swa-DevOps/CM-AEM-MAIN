@@ -34,7 +34,7 @@ jobs:
           git config --global user.name "swarup"
           #git subtree add --prefix=${{ inputs.REPO }} https://github.com/Swa-DevOps/${{ inputs.REPO }}.git ${{ inputs.BRANCH }} --squash
           #git push origin HEAD:${{ inputs.BRANCH }}
-          git subtree ${{ inputs.ACTION }} -d --prefix=${{ inputs.REPO }} "https://github.com/Swa-DevOps/${{ inputs.REPO }}.git"  "${{ inputs.BRANCH }}" --message="123" --squash 
+          git subtree ${{ inputs.ACTION }} -d --prefix=${{ inputs.REPO }} "https://github.com/Swa-DevOps/${{ inputs.REPO }}.git"  "${{ inputs.BRANCH }}" --message="123" 
           git push origin HEAD:${{ inputs.BRANCH }}
           
        
