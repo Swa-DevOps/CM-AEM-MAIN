@@ -38,7 +38,7 @@ jobs:
           
           #git subtree add --prefix=${{ inputs.REPO }} https://github.com/Swa-DevOps/${{ inputs.REPO }}.git ${{ inputs.BRANCH }} --squash
           #git push origin HEAD:${{ inputs.BRANCH }}
-          git subtree ${{ inputs.ACTION }} -d --prefix=${{ inputs.REPO }} "https://api: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@github.com/Swa-DevOps/${{ inputs.REPO }}.git"  "${{ inputs.BRANCH }}" --message="123" 
+          git subtree ${{ inputs.ACTION }} -d --prefix=${{ inputs.REPO }} "https://api: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@github.com/Swa-DevOps/${{ inputs.REPO }}.git" --squash "${{ inputs.BRANCH }}" --message="123" 
           git push origin HEAD:${{ inputs.BRANCH }}
           
        
