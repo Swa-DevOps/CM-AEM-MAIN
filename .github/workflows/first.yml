@@ -29,11 +29,11 @@ jobs:
         run: |
           git config --global user.email "bute.swarup@gmail.com"
           git config --global user.name "swarup"
-          git subtree add --prefix=${{ inputs.REPO }} https://github.com/Swa-DevOps/CM-AEM-${{ inputs.REPO }}.git ${{ inputs.BRANCH }} --squash
+          #git subtree add --prefix=${{ inputs.REPO }} https://github.com/Swa-DevOps/CM-AEM-${{ inputs.REPO }}.git ${{ inputs.BRANCH }} --squash
+          git subtree pull --prefix=${{ inputs.REPO }} https://github.com/Swa-DevOps/CM-AEM-${{ inputs.REPO }}.git ${{ inputs.BRANCH }} --squash
           git push origin HEAD:${{ inputs.BRANCH }}
           
-          #git subtree pull --prefix=${{ inputs.REPO }} https://github.com/Swa-DevOps/CM-AEM-${{ inputs.REPO }}.git ${{ inputs.BRANCH }} 
- 
+       
       - name: Push changes to AEM Main Repo
         run: |
           #git push https://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@github.com/Swa-DevOps/CM-AEM-MAIN.git ${{ inputs.BRANCH }}  
