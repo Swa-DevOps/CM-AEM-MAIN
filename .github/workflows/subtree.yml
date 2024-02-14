@@ -9,7 +9,7 @@ on:
       BRANCH:
         description: "Specify Branch Name"
         required: true
-        COMMIT:
+      COMMIT:
         description: "Commit Message"
         required: true
 
