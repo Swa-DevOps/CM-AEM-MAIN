@@ -1,4 +1,4 @@
-name: Subtree to AEM Main Repo
+name: First time subtree and teenant add
 
 on:
   workflow_dispatch:
