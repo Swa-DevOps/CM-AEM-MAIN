@@ -28,7 +28,7 @@ jobs:
         run: |
           git config --global user.email "bute.swarup@gmail.com"
           git config --global user.name "swarup"
-          git pull origin cm/qa
+          git pull origin ${{ inputs.BRANCH }}
           git remote add -f ${{ inputs.REPO }} https://github.com/Swa-DevOps/CM-AEM-${{ inputs.REPO }}.git
           
       - name: Debug Output Before Pull
@@ -36,7 +36,7 @@ jobs:
           git remote -v
           git log --oneline
 
-      - name: Pull changes from tenant repo
+      - name: merge changes from tenant repo
         run: |
           git merge --allow-unrelated-histories --squash -X subtree=${{ inputs.REPO }} ${{ inputs.REPO }}/${{ inputs.BRANCH }}  
           git commit -m "${{inputs.COMMIT}}"
