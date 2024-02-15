@@ -1,0 +1,32 @@
+name: v2 Sync Tenant Repo to Main Repo 
+
+on:
+  workflow_dispatch:
+    inputs:
+      REPO:
+        description: "Specify Tenant"
+        required: true
+      BRANCH:
+        description: "Specify Branch"
+        required: true
+      PREFIX:
+        description: "Specify prefix"
+        required: true
+
+jobs:
+  sync:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          repository: Swa-DevOps/CM-AEM-MAIN
+          ref: refs/heads/${{ inputs.BRANCH }}
+
+      - name: subtree
+        run: |
+          sh .github/workflows/subtreev2.sh 
+        env:
+          repo: ${{ inputs.REPO }}
+          branch: ${{ inputs.BRANCH }}
+          prefix: ${{ inputs.PREFIX }}
