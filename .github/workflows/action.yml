@@ -12,7 +12,6 @@ jobs:
         with:
           repository: Swa-DevOps/CM-AEM-MAIN
           ref: refs/heads/cm/qa
-          token: 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
  
       - name: Check if subtree exists
         run: |
