@@ -3,16 +3,39 @@ name: TEST Push subtree changes to AEM repo
 on:
   workflow_dispatch:
     inputs:
-      REPO:
-        description: "Specify Tenant Repo" #e.g., CM-AEM-TONOMUS
+      pat:
+        description: "Personal Access Token (PAT)"
         required: true
-      BRANCH:
-        description: "Specify Branch Name"
+      git_name:
+        description: "Git User Name"
+        required: false
+        default: GitHub Actions
+      git_email:
+        description: "Git User Email"
+        required: false
+        default: actions@github.com
+      repo:
+        description: "Repository URL (only https path supported)"
         required: true
-      ACTION:
-        description: "Action Message"
+      action:
+        description: "Action (add, pull)"
         required: true
-
+      position:
+        description: "branch name, commit sha"
+        required: false
+        default: "main"
+      prefix:
+        description: "Prefix"
+        required: true
+      squash:
+        description: "Squash the merge"
+        required: false
+        default: "true"
+      message:
+        description: "Message"
+        required: false
+        default: "Subtree Action"
+    
 jobs:
   subtree_to_aem_main:
     runs-on: ubuntu-latest
@@ -22,13 +45,13 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: Swa-DevOps/CM-AEM-MAIN
-          ref: refs/heads/${{ inputs.BRANCH }}  
-          
+          ref: refs/heads/cm/qa 
+      
       - name: Subtree 
-        uses: Swa-DevOps/subtree@v1
+        run: sh ./github-action.sh
         with:
           pat: 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
-          repo: https://github.com/Swa-DevOps/CM-AEM-${{ inputs.REPO }}.git
-          action: ${{ inputs.ACTION }}
+          repo: https://github.com/Swa-DevOps/CM-AEM-TEST.git
+          action: pull
           prefix: swa-devops
           message: Custom Commit Message
