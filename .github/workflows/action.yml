@@ -17,13 +17,13 @@ jobs:
         id: check_subtree
         run: |
           if git log --pretty=%B | grep -q "Add subtree from tenant repo"; then
-            echo "::set-output name=subtree_exists::true"
+            echo "subtree_exists=true" >> $GITHUB_ENV
           else
-            echo "::set-output name=subtree_exists::false"
+            echo "subtree_exists=false" >> $GITHUB_ENV
           fi
 
       - name: Add tenant repo as subtree
-        if: steps.check_subtree.outputs.subtree_exists == 'false'
+        if: env.subtree_exists != 'true'
         run: |
           git config --global user.email "bute.swarup@gmail.com"
           git config --global user.name "Swa-DevOps"
@@ -33,7 +33,7 @@ jobs:
 
 
       - name: Pull latest changes from tenant repo
-        if: steps.check_subtree.outputs.subtree_exists == 'true'
+        if: env.subtree_exists == 'true'
         run: |
           git config --global user.email "bute.swarup@gmail.com"
           git config --global user.name "Swa-DevOps"
