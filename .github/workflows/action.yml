@@ -17,7 +17,7 @@ jobs:
         id: check_subtree
         run: |
           git config --global --add safe.directory /opt/main-agent/actions-runner/_work/CM-AEM-MAIN/CM-AEM-MAIN
-          if git log --pretty=%B | grep -q "git-subtree-dir: tenant_directory "; then
+          if git log --pretty=%B | grep -q "tenant_directory "; then
             echo "subtree_exists=true" >> $GITHUB_ENV
           else
             echo "subtree_exists=false" >> $GITHUB_ENV
