@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       REPO:
-        description: "Specify Tenant"
+        description: "Specify repo"
         required: true
       BRANCH:
         description: "Specify Branch"
