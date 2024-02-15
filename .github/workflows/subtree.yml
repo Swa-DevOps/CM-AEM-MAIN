@@ -5,7 +5,7 @@ on:
     inputs:
       pat:
         description: "Personal Access Token (PAT)"
-        required: true
+        required: false
       git_name:
         description: "Git User Name"
         required: false
@@ -16,17 +16,17 @@ on:
         default: actions@github.com
       repo:
         description: "Repository URL (only https path supported)"
-        required: true
+        required: false
       action:
         description: "Action (add, pull)"
-        required: true
+        required: false
       position:
         description: "branch name, commit sha"
         required: false
         default: "main"
       prefix:
         description: "Prefix"
-        required: true
+        required: false
       squash:
         description: "Squash the merge"
         required: false
@@ -48,8 +48,8 @@ jobs:
           ref: refs/heads/cm/qa 
       
       - name: Subtree 
-        run: sh ./github-action.sh
-        with:
+        run: sh ./github-action.sh ${{ env.pat }} ${{ env.repo }} ${{ env.action }} ${{ env.prefix }} ${{ env.message }}
+        env:
           pat: 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
           repo: https://github.com/Swa-DevOps/CM-AEM-TEST.git
           action: pull
