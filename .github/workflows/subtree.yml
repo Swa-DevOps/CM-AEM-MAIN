@@ -48,7 +48,7 @@ jobs:
           ref: refs/heads/cm/qa 
       
       - name: Subtree 
-        run: sh ./github-action.sh ${{ env.pat }} ${{ env.repo }} ${{ env.action }} ${{ env.prefix }} ${{ env.message }}
+        run: sh .//.github/workflows/github-action.sh ${{ env.pat }} ${{ env.repo }} ${{ env.action }} ${{ env.prefix }} ${{ env.message }}
         env:
           pat: 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
           repo: https://github.com/Swa-DevOps/CM-AEM-TEST.git
