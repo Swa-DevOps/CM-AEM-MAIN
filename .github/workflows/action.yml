@@ -24,6 +24,8 @@ jobs:
       - name: Add tenant repo as subtree
         if: success() && ${{ github.event_name == 'workflow_dispatch' }}
         run: |
+          git config --global user.email "bute.swarup@gmail.com"
+          git config --global user.name "Swa-DevOps"
           git remote add -f tenant_repo https://github.com/Swa-DevOps/CM-AEM-TEST.git
           git subtree add --prefix=tenant_directory tenant_repo cm/qa --squash
           git commit -am "Add subtree from tenant repo"
@@ -31,6 +33,8 @@ jobs:
  
       - name: Pull latest changes from tenant repo
         run: |
+          git config --global user.email "bute.swarup@gmail.com"
+          git config --global user.name "Swa-DevOps"
           git subtree pull --prefix=tenant_directory tenant_repo cm/qa --squash
           git commit -am "Pull latest changes from tenant repo"
           git push origin cm/qa
