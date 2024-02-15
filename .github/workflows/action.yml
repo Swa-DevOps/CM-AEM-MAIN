@@ -28,7 +28,7 @@ jobs:
           git config --global user.name "Swa-DevOps"
           git remote add -f tenant_repo https://github.com/Swa-DevOps/CM-AEM-TEST.git -t cm/qa
           git subtree add --prefix=tenant_directory https://github.com/Swa-DevOps/CM-AEM-TEST.git cm/qa --squash
-          git commit -am "Add subtree from tenant repo"
+          #git commit -am "Add subtree from tenant repo"
           git push https://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@github.com/Swa-DevOps/CM-AEM-MAIN.git
  
       - name: Pull latest changes from tenant repo
