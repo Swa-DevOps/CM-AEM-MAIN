@@ -23,7 +23,7 @@ jobs:
           fi
 
       - name: Add tenant repo as subtree
-        if: steps.check_subtree.outputs.subtree_exists != 'true'
+        if: steps.check_subtree.outputs.subtree_exists == 'false'
         run: |
           git config --global user.email "bute.swarup@gmail.com"
           git config --global user.name "Swa-DevOps"
@@ -32,7 +32,7 @@ jobs:
 
 
       - name: Pull latest changes from tenant repo
-        if: steps.check_subtree.outputs.subtree_exists != 'false'
+        if: steps.check_subtree.outputs.subtree_exists == 'true'
         run: |
           git config --global user.email "bute.swarup@gmail.com"
           git config --global user.name "Swa-DevOps"
