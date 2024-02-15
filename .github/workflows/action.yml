@@ -23,17 +23,16 @@ jobs:
           fi
 
       - name: Add tenant repo as subtree
-        if: steps.check_subtree.outputs.subtree_exists == 'false'
+        if: steps.check_subtree.outputs.subtree_exists != 'true'
         run: |
           git config --global user.email "bute.swarup@gmail.com"
           git config --global user.name "Swa-DevOps"
-          git remote add -f tenant_repo https://github.com/Swa-DevOps/CM-AEM-TEST.git -t cm/qa
-          git subtree add --prefix=tenant_directory https://github.com/Swa-DevOps/CM-AEM-TEST.git cm/qa --squash
+          #git remote add -f tenant_repo https://github.com/Swa-DevOps/CM-AEM-TEST.git -t cm/qa
           git push https://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@github.com/Swa-DevOps/CM-AEM-MAIN.git
 
 
       - name: Pull latest changes from tenant repo
-        if: steps.check_subtree.outputs.subtree_exists == 'True'
+        if: steps.check_subtree.outputs.subtree_exists != 'false'
         run: |
           git config --global user.email "bute.swarup@gmail.com"
           git config --global user.name "Swa-DevOps"
