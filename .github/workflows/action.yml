@@ -7,12 +7,12 @@ jobs:
   sync:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout main repo
+      - name: Checkout code
         uses: actions/checkout@v2
         with:
           repository: Swa-DevOps/CM-AEM-MAIN
+          ref: refs/heads/cm/qa
           token: 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
-          ref: cm/qa
  
       - name: Check if subtree exists
         run: |
