@@ -26,10 +26,10 @@ jobs:
         run: |
           git config --global user.email "bute.swarup@gmail.com"
           git config --global user.name "Swa-DevOps"
-          git remote add -f tenant_repo https://github.com/Swa-DevOps/CM-AEM-TEST.git
-          git subtree add --prefix=tenant_directory tenant_repo cm/qa --squash
+          git remote add -f tenant_repo https://github.com/Swa-DevOps/CM-AEM-TEST.git -t cm/qa
+          git subtree add --prefix=tenant_directory https://github.com/Swa-DevOps/CM-AEM-TEST.git cm/qa --squash
           git commit -am "Add subtree from tenant repo"
-          git push origin cm/qa
+          git push https://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@github.com/Swa-DevOps/CM-AEM-MAIN.git
  
       - name: Pull latest changes from tenant repo
         run: |
@@ -37,4 +37,4 @@ jobs:
           git config --global user.name "Swa-DevOps"
           git subtree pull --prefix=tenant_directory tenant_repo cm/qa --squash
           git commit -am "Pull latest changes from tenant repo"
-          git push origin cm/qa
+          git push https://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@github.com/Swa-DevOps/CM-AEM-MAIN.git
