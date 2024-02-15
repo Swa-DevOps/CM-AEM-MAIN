@@ -25,7 +25,7 @@ jobs:
 
       - name: subtree
         run: |
-          sh .github/workflows/subtreev2.sh 
+          sh /opt/main-agent/actions-runner/_work/CM-AEM-MAIN/CM-AEM-MAIN/.github/workflows/subtreev2.sh 
         env:
           repo: ${{ inputs.REPO }}
           branch: ${{ inputs.BRANCH }}
