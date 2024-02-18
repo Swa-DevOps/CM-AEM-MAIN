@@ -1,4 +1,4 @@
-name: v2 Sync Tenant Repo to Main Repo 
+name: v3 Sync Tenant Repo to Main Repo 
 
 on:
   workflow_dispatch:
