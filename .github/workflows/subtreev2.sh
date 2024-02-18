@@ -6,7 +6,7 @@ action=$4
 
 git config --global user.email "bute.swarup@gmail.com"
 git config --global user.name "Swa-DevOps"
-git remote add origin "https://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@github.com/Swa-DevOps/CM-AEM-MAIN.git"
+git remote add origin "https://Swa-DevOps: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@github.com/Swa-DevOps/CM-AEM-MAIN.git"
 git pull origin
 git checkout $branch
 git remote add $prefix $repo -t $branch
