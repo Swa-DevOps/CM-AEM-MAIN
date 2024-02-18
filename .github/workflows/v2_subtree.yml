@@ -12,7 +12,10 @@ on:
       PREFIX:
         description: "Specify prefix"
         required: true
-
+      ACTION:
+        description: "Specify Action pull / add"
+        required: true
+        
 jobs:
   sync:
     runs-on: ubuntu-latest
@@ -26,8 +29,9 @@ jobs:
 
       - name: subtree
         run: |
-          chmod +x .github/workflows/subtreev2.sh && pwd && bash .github/workflows/subtreev2.sh
+          chmod +x .github/workflows/subtreev2.sh && pwd && bash .github/workflows/subtreev2.sh $repo $branch $prefix $action
         env:
           repo: ${{ inputs.REPO }}
           branch: ${{ inputs.BRANCH }}
           prefix: ${{ inputs.PREFIX }}
+          action: ${{ inputs.ACTION }}
