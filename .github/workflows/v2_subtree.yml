@@ -26,7 +26,7 @@ jobs:
 
       - name: subtree
         run: |
-          chmod +x .github/workflows/subtreev2.sh && bash .github/workflows/subtreev2.sh
+          chmod +x .github/workflows/subtreev2.sh && pwd && bash .github/workflows/subtreev2.sh
         env:
           repo: ${{ inputs.REPO }}
           branch: ${{ inputs.BRANCH }}
