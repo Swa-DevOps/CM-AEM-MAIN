@@ -4,10 +4,13 @@ branch=$2
 prefix=$3
 action=$4
 
+git reset --hard HEAD
 git config --global user.email "bute.swarup@gmail.com"
 git config --global user.name "Swa-DevOps"
 git remote add origin "https://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@github.com/Swa-DevOps/CM-AEM-MAIN.git"
-git pull origin
+
+git pull origin 
+
 git checkout $branch
 git remote add $prefix $repo -t $branch
 git subtree $action --prefix=$prefix $repo $branch -m "subtree push changes to main"
