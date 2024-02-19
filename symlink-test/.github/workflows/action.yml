@@ -1,0 +1,43 @@
+name: Sync Tenant Repo to Main Repo
+
+on:
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          repository: Swa-DevOps/CM-AEM-MAIN
+          ref: refs/heads/cm/qa
+
+      - name: Check if subtree exists
+        id: check_subtree
+        run: |
+          git config --global --add safe.directory /opt/main-agent/actions-runner/_work/CM-AEM-MAIN/CM-AEM-MAIN
+          if git log --pretty=%B | grep -q "tenant_directory "; then
+            echo "subtree_exists=true" >> $GITHUB_ENV
+          else
+            echo "subtree_exists=false" >> $GITHUB_ENV
+          fi
+
+      - name: Add tenant repo as subtree
+        if: env.subtree_exists != 'true'
+        run: |
+          git config --global user.email "bute.swarup@gmail.com"
+          git config --global user.name "Swa-DevOps"
+          # git remote add -f tenant_repo https://github.com/Swa-DevOps/CM-AEM-TEST.git -t cm/qa
+          git subtree pull --prefix=tenant_directory https://github.com/Swa-DevOps/CM-AEM-TEST.git cm/qa --squash
+          git push https://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@github.com/Swa-DevOps/CM-AEM-MAIN.git cm/qa
+
+
+      - name: Pull latest changes from tenant repo
+        if: env.subtree_exists == 'true'
+        run: |
+          git config --global user.email "bute.swarup@gmail.com"
+          git config --global user.name "Swa-DevOps"
+          git subtree pull --prefix=tenant_directory https://github.com/Swa-DevOps/CM-AEM-TEST.git cm/qa --squash
+          git commit -am "Pull latest changes from tenant repo"
+          git push https://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@github.com/Swa-DevOps/CM-AEM-MAIN.git cm/qa

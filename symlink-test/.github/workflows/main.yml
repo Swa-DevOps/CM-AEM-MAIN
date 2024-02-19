@@ -1,0 +1,33 @@
+name: First time subtree and teenant add
+
+on:
+  workflow_dispatch:
+    inputs:
+      REPO:
+        description: "Specify Tenant"
+        required: true
+jobs:
+  subtree_to_aem_main:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          repository: Swa-DevOps/CM-AEM-MAIN
+          ref: refs/heads/cm/qa 
+          
+      - name: adding tenant repo
+        run: |
+          git remote add tonomus1 https://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@github.com/Swa-DevOps/CM-AEM-TONOMUS.git --track cm/qa
+          git fetch tonomus1
+          
+      - name: Subtree
+        run: |
+          git config --global user.email "bute.swarup@gmail.com"
+          git config --global user.name "swarup"
+          git subtree add --prefix=tonomus1 https://github.com/Swa-DevOps/CM-AEM-TONOMUS.git cm/qa
+          #git subtree pull --prefix=tonomus1 https://github.com/Swa-DevOps/CM-AEM-TONOMUS.git cm/qa
+ 
+      - name: Push changes to AEM Main Repo
+        run: |
+          git push https://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@github.com/Swa-DevOps/CM-AEM-MAIN.git cm/qa 

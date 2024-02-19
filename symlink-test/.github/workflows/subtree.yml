@@ -1,0 +1,57 @@
+name: TEST Push subtree changes to AEM repo
+
+on:
+  workflow_dispatch:
+    inputs:
+      pat:
+        description: "Personal Access Token (PAT)"
+        required: false
+      git_name:
+        description: "Git User Name"
+        required: false
+        default: GitHub Actions
+      git_email:
+        description: "Git User Email"
+        required: false
+        default: actions@github.com
+      repo:
+        description: "Repository URL (only https path supported)"
+        required: false
+      action:
+        description: "Action (add, pull)"
+        required: false
+      position:
+        description: "branch name, commit sha"
+        required: false
+        default: "main"
+      prefix:
+        description: "Prefix"
+        required: false
+      squash:
+        description: "Squash the merge"
+        required: false
+        default: "true"
+      message:
+        description: "Message"
+        required: false
+        default: "Subtree Action"
+    
+jobs:
+  subtree_to_aem_main:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          repository: Swa-DevOps/CM-AEM-MAIN
+          ref: refs/heads/cm/qa 
+      
+      - name: Subtree 
+        run: bash .github/workflows/github-action.sh ${{ env.pat }} ${{ env.repo }} ${{ env.action }} ${{ env.prefix }} ${{ env.message }}
+        env:
+          pat: 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
+          repo: https://github.com/Swa-DevOps/CM-AEM-TEST.git
+          action: pull
+          prefix: swa-devops
+          message: Custom Commit Message
